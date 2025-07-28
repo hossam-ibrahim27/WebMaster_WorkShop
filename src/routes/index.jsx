@@ -1,6 +1,6 @@
 import { createBrowserRouter, createRoutesFromElements, Route, Routes, } from "react-router";
 
-const router = createBrowserRouter(
+const routes = createBrowserRouter(
     createRoutesFromElements(
         <>
             //? Here Add Your Route.
@@ -8,4 +8,4 @@ const router = createBrowserRouter(
         </>
     )
 );
-export default router;
+export default routes;
