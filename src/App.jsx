@@ -1,3 +1,4 @@
+
 import './App.css';
 import "@fontsource/lemonada";
 import "@fontsource/lemonada/400.css";
@@ -11,10 +12,16 @@ import "@fontsource/noto-sans-arabic/400.css";
 
 import { RouterProvider } from 'react-router-dom'; // ✅ الصح هنا
 import router from './routes';
+import './App.css'
+
+import { RouterProvider } from 'react-router/dom'
+import routes from './routes'
+
 
 function App() {
   return (
     <>
+
       <RouterProvider router={router} />
     
 
@@ -23,3 +30,4 @@ function App() {
 }
 
 export default App;
+
