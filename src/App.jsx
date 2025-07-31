@@ -14,8 +14,6 @@ import { RouterProvider } from 'react-router-dom'; // ✅ الصح هنا
 import router from './routes';
 import './App.css'
 
-import { RouterProvider } from 'react-router/dom'
-import routes from './routes'
 
 
 function App() {
