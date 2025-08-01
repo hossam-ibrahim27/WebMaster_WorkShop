@@ -11,7 +11,7 @@ import "@fontsource/noto-sans-arabic"; // Defaults to weight 400
 import "@fontsource/noto-sans-arabic/400.css"; // Specify weight
 // import "@fontsource/noto-sans-arabic/400-italic.css";
 import { RouterProvider } from 'react-router/dom'
-import router from './router'
+import router from './routes/index.jsx'
 
 function App() {
   return (

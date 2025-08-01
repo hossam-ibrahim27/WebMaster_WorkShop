@@ -1,10 +1,10 @@
 import { createBrowserRouter, createRoutesFromElements, Route, Routes, } from "react-router";
+import ShopPage from "../pages/ShopPage";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            //? Here Add Your Route.
-            {/* <Route path="/" element={<HomePage />} /> */}
+            <Route path="/shop" element={<ShopPage />} />
         </>
     )
 );
