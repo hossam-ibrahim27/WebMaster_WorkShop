@@ -3,7 +3,7 @@ import { faGreaterThan, faHome } from "@fortawesome/free-solid-svg-icons";
 export default function Breadcrumb({ page }) {
   return (
     <nav className="text-gray-700 text-[12px] mb-4" aria-label="Breadcrumb">
-      <ol className="list-reset flex items-center justify-center gap-1">
+      <ol className="list-reset flex  gap-1">
         <li
           onClick={() => (window.location.href = "/")}
           className="cursor-pointer"

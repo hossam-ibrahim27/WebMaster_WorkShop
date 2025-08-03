@@ -1,24 +1,33 @@
-import './App.css'
-import "@fontsource/lemonada"; // Defaults to weight 400
-import "@fontsource/lemonada/400.css"; // Specify weight
-import "@fontsource/cairo"; // Defaults to weight 400
+
+import './App.css';
+import "@fontsource/lemonada";
+import "@fontsource/lemonada/400.css";
+import "@fontsource/cairo";
 import "@fontsource/cairo/400.css";
-// import "@fontsource/cairo/400-italic.css"
-import "@fontsource/amiri"; // Defaults to weight 400
-import "@fontsource/amiri/400.css"; // Specify weight
-import "@fontsource/amiri/400-italic.css"
-import "@fontsource/noto-sans-arabic"; // Defaults to weight 400
-import "@fontsource/noto-sans-arabic/400.css"; // Specify weight
-// import "@fontsource/noto-sans-arabic/400-italic.css";
-import { RouterProvider } from 'react-router/dom'
-import router from './routes/index.jsx'
+import "@fontsource/amiri";
+import "@fontsource/amiri/400.css";
+import "@fontsource/amiri/400-italic.css";
+import "@fontsource/noto-sans-arabic";
+import "@fontsource/noto-sans-arabic/400.css";
+
+import { RouterProvider } from 'react-router-dom'; // ✅ الصح هنا
+import router from './routes';
+import './App.css'
+import { Toaster } from 'react-hot-toast';
+
+
 
 function App() {
   return (
     <>
+      <Toaster position="top-right" reverseOrder={false} />
+
       <RouterProvider router={router} />
+    
+
     </>
-  )
+  );
 }
 
-export default App
+export default App;
+

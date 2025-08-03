@@ -1,0 +1,188 @@
+.product-tab.fruiet-tab {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 874px;
+    border-radius: 7px;
+}
+
+.product-tab.fruiet-tab.fruiet-tab_2 {
+    height: 738px;
+}
+
+.product-tab.fruiet-tab .product-carousel {
+    width: calc(100% - 33%);
+}
+
+.product-tab.fruiet-tab .product-carousel .item {
+    width: calc(100% / 4);
+}
+
+.product-tab.fruiet-tab .right {
+    width: 33%;
+    height: 100%;
+    border: 1px solid #EDEEF5;
+    border-right: none;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    border-radius: 7px 0 0 7px;
+}
+
+.product-tab.fruiet-tab .right .img-box {
+    background-image: url(../../../src/images/vegatabels_1.png);
+    background-size: cover;
+    width: 100%;
+    height: 332px;
+    border-radius: 7px;
+    padding: 40px;
+    color: #202435;
+}
+
+.product-tab.fruiet-tab .right .img-box_2 {
+    background-image: url(../../../src/images/vegatabels_2.png);
+}
+
+.product-tab.fruiet-tab .right .content h2 {
+    font-weight: 400;
+    font-size: 19.2px;
+    letter-spacing: -0.7px;
+}
+
+.product-tab.fruiet-tab .right .content p.title {
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: -0.7px;
+}
+
+.product-tab.fruiet-tab .right .content p:nth-of-type(2) {
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: -0.1px;
+    margin-bottom: 20px;
+}
+
+.product-tab.fruiet-tab .right .content .btn {
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: -0.1px;
+    background-color: #233A95;
+    color: #FFFFFF;
+    padding: 9px 20px;
+    border-radius: 30px;
+    text-transform: capitalize;
+}
+
+.product-tab.fruiet-tab .right .bottom-half {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    padding: 33px 30px;
+}
+
+.product-tab.fruiet-tab .right .list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    color: #3E445A;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: -0.1px;
+}
+
+.product-tab.fruiet-tab .right .list .list-right,
+.product-tab.fruiet-tab .right .list .list-left {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-tab.fruiet-tab .right .link {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: #233A95;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: -0.1px;
+    text-transform: capitalize;
+}
+
+.product-tab.fruiet-tab .right .link span {
+    margin-right: 10px;
+}
+
+.product-tab.fruiet-tab .btn {
+    border: 1px solid #35AFA0;
+    color: #35AFA0;
+    background-color: transparent;
+}
+
+.product-tab.fruiet-tab .btn.none {
+    display: none;
+}
+
+/***************************************************************************************? */
+/** Responsive */
+@media screen and (max-width:1280px) {
+    .product-tab.fruiet-tab {
+        flex-direction: column;
+        border: 1px solid #EDEEF5;
+        height: fit-content;
+    }
+
+    .product-tab.fruiet-tab.fruiet-tab_2 {
+        height: fit-content;
+    }
+
+    .product-tab.fruiet-tab .product-carousel {
+        width: 100%;
+    }
+
+    .product-tab.fruiet-tab .right {
+        width: 100%;
+        height: 300px;
+        flex-direction: row;
+    }
+
+    .product-tab.fruiet-tab .right .img-box {
+        height: 100%;
+    }
+}
+
+@media screen and (max-width:740px) {
+    .product-tab.fruiet-tab .product-carousel .item {
+        width: calc(100% / 2);
+    }
+}
+
+@media screen and (max-width:530px) {
+    .product-tab.fruiet-tab .product-carousel .item {
+        width: calc(100%);
+    }
+
+    .product-tab.fruiet-tab .right {
+        width: 100%;
+        height: 500px;
+        flex-direction: column;
+    }
+
+    .product-tab.fruiet-tab .right .img-box {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:345px) {
+    .product-tab.fruiet-tab .right .content p.title {
+        font-size: 20px;
+    }
+}

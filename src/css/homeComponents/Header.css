@@ -1,0 +1,526 @@
+/*? Header I Divided To Four Quarter are : FirstQuarter , SecondQuarter , ThirdQuarter , FourthQuarter. */
+/** FirstQuarter */
+.first-quarter {
+    background-color: #35AFA0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+}
+
+.first-quarter span {
+    font-weight: 400px;
+    color: #FFFFFF;
+    line-height: 18px;
+}
+
+/************************************************/
+/** SecondQuarter */
+.second-Quartor {
+    border-bottom: 1px solid #E3E4E6;
+    height: 40px;
+    padding-bottom: 1px;
+}
+
+.second-Quartor .conainer {
+    width: 1200px;
+    height: 100%;
+    color: #3E445A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+
+.second-Quartor .left-links a {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.1px;
+}
+
+.second-Quartor .left-links a:nth-of-type(2) {
+    margin: 0 20px;
+}
+
+.second-Quartor .left-links a:hover {
+    color: #35AFA0;
+}
+
+.second-Quartor .right-conent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.second-Quartor .right-conent div {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.1px;
+}
+
+.second-Quartor .right-conent div:nth-of-type(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.second-Quartor .right-conent div:nth-of-type(1) .fonticon {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.second-Quartor .right-conent div:nth-of-type(2) {
+    padding: 0 40px;
+    position: relative;
+}
+
+.second-Quartor .right-conent div:nth-of-type(2)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 8%;
+    background-color: #E3E4E6;
+    width: 1px;
+    height: 100%;
+}
+
+.second-Quartor .right-conent div:nth-of-type(2)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 8%;
+    background-color: #E3E4E6;
+    width: 1px;
+    height: 100%;
+}
+
+.second-Quartor .right-conent div:nth-of-type(2) span {
+    color: #35AFA0;
+    margin-left: 5px;
+    font-weight: 700;
+    font-style: Bold;
+
+}
+
+.second-Quartor .right-conent div:nth-of-type(3) {
+    font-weight: 500;
+}
+
+.second-Quartor .right-conent div:nth-of-type(3) span:nth-of-type(1) {
+    margin-right: 20px;
+}
+
+.second-Quartor .right-conent div:nth-of-type(3) .fonticon {
+    margin-left: 5px;
+}
+
+/************************************************/
+/** ThirdQuarter */
+.third-quarter .conainer {
+    width: 1200px;
+    height: 100%;
+    color: #3E445A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.third-quarter .logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.third-quarter .logo .img-box {
+    border-left: 5px solid #35AFA0;
+    border-bottom: 5px solid #35AFA0;
+    border-radius: 50%;
+}
+
+
+.third-quarter .logo div {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.third-quarter .logo div div:nth-of-type(2) {
+    color: #35AFA0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 36px;
+    line-height: 16.5px;
+    letter-spacing: -0.1px;
+    font-weight: 400;
+    margin-left: 5px;
+}
+
+.third-quarter .logo span {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16.5px;
+    letter-spacing: -0.1px;
+    opacity: 50%;
+}
+
+.third-quarter .search {
+    width: 60%;
+    position: relative;
+    padding: 15px 30px;
+    background-color: #F3F4F7;
+}
+
+.third-quarter .search input {
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.third-quarter .search .fonticon {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translate(0, -50%);
+}
+
+.third-quarter .padge,
+.third-quarter .padge .basket {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.third-quarter .padge .user {
+    width: 42px;
+    height: 42px;
+    border: 1px solid #E2E4EC;
+    border-radius: 50%;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.third-quarter .padge .basket span {
+    font-weight: 600;
+    letter-spacing: -0.1px;
+    margin-right: 20px;
+}
+
+.third-quarter .padge .basket div {
+    background-color: #FFF1EE;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #EA2B0F;
+    position: relative;
+}
+
+.third-quarter .padge .basket div span {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transform: translate(-70%, -25%);
+    background-color: #EA2B0F;
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: -0.1px;
+    color: #FFFFFF;
+    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.third-quarter .responsive-nav .nav,
+.third-quarter .responsive-nav .collabseButton {
+    display: none;
+}
+
+/************************************************/
+/** FourthQuarter */
+.fourth-quarter {
+    padding: 20px 0;
+    border-bottom: 1px solid #E2E4EC;
+}
+
+.fourth-quarter .conainer {
+    width: 1200px;
+    height: 100%;
+    color: #3E445A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+
+.fourth-quarter .categores {
+    background-color: #35AFA0;
+    border-radius: 50px;
+    padding: 0 15px;
+    width: 215px;
+    height: 50px;
+    color: #FFFFFF;
+    position: relative;
+}
+
+.fourth-quarter .categores div:nth-of-type(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-family: Dosis;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.fourth-quarter .categores div:nth-of-type(2) {
+    background-color: #EDEEF5;
+    color: #71778E;
+    border: 1px solid #FFFFFF;
+    width: 60%;
+    border-radius: 18px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 0 10px;
+}
+
+.fourth-quarter .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #3E445A;
+    text-transform: uppercase;
+}
+
+
+
+.fourth-quarter .links .link.active {
+    background-color: #F0FAFF;
+    color: #35AFA0;
+    border-radius: 50px;
+    padding: 11px 18px;
+}
+
+.fourth-quarter .links .fonticon {
+    margin-right: 8px;
+}
+
+.fourth-quarter .links li:nth-of-type(1) .fonticon {
+    margin-left: 10px;
+}
+
+.fourth-quarter .links li a:hover {
+    color: #35AFA0;
+}
+/*?____________________________________________________________________________________________________*/
+/**Responsive*/
+@media screen and (max-width:1280px) {
+
+    .second-Quartor .conainer,
+    .fourth-quarter .conainer,
+    .third-quarter .conainer {
+        width: 95%;
+    }
+}
+/* 
+@media screen and (max-width:1190px) {
+
+    .second-Quartor .conainer,
+    .fourth-quarter .conainer,
+    .third-quarter .conainer {
+        width: 95%;
+    }
+} */
+
+@media screen and (max-width:1084px) {
+    .fourth-quarter .categores {
+        display: none;
+    }
+
+    .fourth-quarter .conainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width:998px) {
+    .third-quarter .search {
+        width: 55%;
+    }
+}
+
+@media screen and (max-width:910px) {
+    .second-Quartor .left-links {
+        display: none;
+    }
+
+    .second-Quartor .right-conent {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .fourth-quarter .links {
+        gap: 25px;
+    }
+
+    .third-quarter .search {
+        width: 45%;
+        padding-left: 15px;
+    }
+
+    .third-quarter .search .fonticon {
+        right: 15px;
+    }
+}
+
+@media screen and (max-width:723px) {
+
+    .fourth-quarter .links,
+    .third-quarter .search,
+    .third-quarter .padge {
+        display: none;
+    }
+
+    .fourth-quarter {
+        padding: 10px;
+    }
+
+    .third-quarter .responsive-nav .collabseButton {
+        display: flex;
+        font-size: 35px;
+        color: #35AFA0;
+        cursor: pointer;
+    }
+
+    .third-quarter .responsive-nav .nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #ffffff;
+        z-index: 5000;
+        padding-top: 100px;
+    }
+
+    .third-quarter .responsive-nav .nav .fonticonclose {
+        cursor: pointer;
+        color: #35AFA0;
+        font-size: 30px;
+    }
+
+    .third-quarter .responsive-nav .nav .fourth-quarter {
+        border: none;
+        width: 100%;
+    }
+
+    .third-quarter .responsive-nav .nav .fourth-quarter .links {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        width: 100%;
+    }
+
+    .third-quarter .responsive-nav .nav .padge {
+        display: flex;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .second-Quartor .right-conent div:nth-of-type(2) {
+        display: none;
+    }
+
+    .second-Quartor .right-conent {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width:623px) {
+    .first-quarter span {
+        line-height: 18px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .first-quarter span {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:490px) {
+    .first-quarter span {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width:458px) {
+    .first-quarter span {
+        font-size: 12px;
+    }
+
+    .second-Quartor .right-conent div:nth-of-type(3) {
+        display: none;
+    }
+
+    .second-Quartor .right-conent {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:425px) {
+    .first-quarter span {
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width:390px) {
+    .first-quarter span {
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width:380px) {
+    .first-quarter span {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width:346px) {
+    .first-quarter {
+        display: none;
+    }
+}

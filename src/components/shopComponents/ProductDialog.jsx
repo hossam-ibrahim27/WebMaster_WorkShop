@@ -6,27 +6,38 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
+import { useCart } from "../../store/CartContext"; // adjust the path as needed
+import toast from "react-hot-toast";
 
-export const ProductDialog = ({
-  product,
-  isOpen,
-  onClose,
-  onProductClick,
-  relatedProductsData = [],
-}) => {
+export const ProductDialog = ({ product, isOpen, onClose, onProductClick }) => {
   const [selectedSize, setSelectedSize] = useState("Medium");
   const [quantity, setQuantity] = useState(1);
   const [mainImage, setMainImage] = useState("");
+  const [relatedProducts, setRelatedProducts] = useState([]);
+  const { addToCart } = useCart();
 
   useEffect(() => {
-    if (product?.thumbnail) setMainImage(product.thumbnail);
+    if (product?.image || product?.thumbnail) {
+      setMainImage(product.image || product.thumbnail);
+    }
+  }, [product]);
+
+  useEffect(() => {
+    if (product) {
+      const stored = JSON.parse(localStorage.getItem("product")) || [];
+      const filtered = stored.filter((p) => p.id !== product.id);
+      setRelatedProducts(filtered.slice(0, 5));
+    }
   }, [product]);
 
   if (!isOpen || !product) return null;
 
   const sizes = ["Small", "Medium", "Large"];
   const tags = product.tags || ["Organic", "Fresh", "Vegan"];
-  const relatedProducts = relatedProductsData.slice(0, 5);
+
+  const discountedPrice =
+    product.discountedPrice ??
+    product.price - (product.price * product.discountPercentage) / 100;
 
   const handleSizeSelect = (size) => setSelectedSize(size);
   const increaseQty = () => setQuantity((q) => q + 1);
@@ -45,7 +56,7 @@ export const ProductDialog = ({
           </button>
         </div>
 
-        {/* Main Content */}
+        {/* Content */}
         <div className="flex flex-col md:flex-row gap-6">
           {/* Images */}
           <div className="w-full md:w-1/2">
@@ -55,41 +66,35 @@ export const ProductDialog = ({
               className="w-full h-64 object-cover rounded-md mb-4"
             />
             <div className="flex gap-2 overflow-x-auto pb-2">
-              {[product.thumbnail, ...(product.images || [])].map(
-                (image, index) => (
-                  <img
-                    key={index}
-                    src={image}
-                    alt={`img-${index}`}
-                    onClick={() => setMainImage(image)}
-                    className={`w-20 h-20 object-cover rounded-md cursor-pointer border ${
-                      mainImage === image
-                        ? "border-green-600"
-                        : "border-gray-200"
-                    }`}
-                  />
-                )
-              )}
+              {[product.image, ...(product.images || [])].map((img, i) => (
+                <img
+                  key={i}
+                  src={img}
+                  alt={`img-${i}`}
+                  onClick={() => setMainImage(img)}
+                  className={`w-20 h-20 object-cover rounded-md cursor-pointer border ${
+                    mainImage === img ? "border-green-600" : "border-gray-200"
+                  }`}
+                />
+              ))}
             </div>
           </div>
 
-          {/* Product Details */}
+          {/* Details */}
           <div className="w-full md:w-1/2">
             <h2 className="text-2xl font-bold text-gray-800 mb-2">
               {product.title}
             </h2>
 
-            {/* Pricing */}
             <div className="mb-3">
               <span className="text-gray-500 line-through mr-2">
                 ${product.price?.toFixed(2)}
               </span>
               <span className="text-green-600 font-bold text-lg">
-                ${product.discountedPrice?.toFixed(2)}
+                ${discountedPrice.toFixed(2)}
               </span>
             </div>
 
-            {/* Sizes */}
             <div className="mb-4">
               <p className="font-semibold mb-1">Available Sizes:</p>
               <div className="flex flex-wrap gap-2">
@@ -109,7 +114,6 @@ export const ProductDialog = ({
               </div>
             </div>
 
-            {/* Quantity */}
             <div className="mb-4 w-full py-2 bg-[#E5E7EB] rounded flex items-center justify-center space-x-4">
               <button
                 onClick={decreaseQty}
@@ -126,9 +130,15 @@ export const ProductDialog = ({
               </button>
             </div>
 
-            {/* Action Buttons */}
             <div className="mb-6 flex flex-col gap-2">
-              <button className="w-full bg-[#35afa0] text-white py-2 rounded hover:bg-[#2c8b7a] text-sm sm:text-base">
+              <button
+                className="w-full bg-[#35afa0] text-white py-2 rounded hover:bg-[#2c8b7a] text-sm sm:text-base"
+                onClick={() => {
+                  addToCart(product, quantity, selectedSize);
+                  toast.success("Product added to cart");
+                  onClose(); // optionally close dialog
+                }}
+              >
                 Add to Cart
               </button>
               <div className="flex flex-col sm:flex-row justify-between gap-2">
@@ -143,7 +153,6 @@ export const ProductDialog = ({
               </div>
             </div>
 
-            {/* Tags */}
             <div className="mt-4">
               <h4 className="font-semibold text-gray-600 mb-1">Tags:</h4>
               <div className="flex flex-wrap gap-2">
@@ -158,7 +167,6 @@ export const ProductDialog = ({
               </div>
             </div>
 
-            {/* Description */}
             <div className="mt-4">
               <h4 className="font-semibold text-gray-800 mb-1">
                 Product Details:
@@ -175,25 +183,32 @@ export const ProductDialog = ({
               Related Products:
             </h4>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {relatedProducts.map((related, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => onProductClick(related)}
-                  className="p-2 cursor-pointer hover:shadow-md transition bg-white border rounded"
-                >
-                  <img
-                    src={related.thumbnail}
-                    alt={related.title}
-                    className="w-full h-28 object-cover rounded"
-                  />
-                  <p className="text-xs text-gray-600 mt-1">
-                    ${related.discountedPrice?.toFixed(2)}
-                  </p>
-                  <p className="mt-1 text-sm font-semibold text-gray-800 line-clamp-2">
-                    {related.title}
-                  </p>
-                </div>
-              ))}
+              {relatedProducts.map((related, idx) => {
+                const rDiscounted =
+                  related.discountedPrice ??
+                  related.price -
+                    (related.price * related.discountPercentage) / 100;
+
+                return (
+                  <div
+                    key={idx}
+                    onClick={() => onProductClick(related)}
+                    className="p-2 cursor-pointer hover:shadow-md transition bg-white border rounded"
+                  >
+                    <img
+                      src={related.image || related.thumbnail}
+                      alt={related.title}
+                      className="w-full h-28 object-cover rounded"
+                    />
+                    <p className="text-xs text-gray-600 mt-1">
+                      ${rDiscounted.toFixed(2)}
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-gray-800 line-clamp-2">
+                      {related.title}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}

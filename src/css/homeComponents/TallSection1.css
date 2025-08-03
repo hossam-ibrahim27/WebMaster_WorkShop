@@ -1,0 +1,123 @@
+.tall-section {
+    width: 1200px;
+    height: 105px;
+    border-radius: 7px;
+    background-color: #F8EFEA;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tall-section .conainer {
+    width: 1170px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    padding-top: 20px;
+    overflow: hidden;
+}
+
+.tall-section .conainer .imag-box {
+    width: 211px;
+    height: 134px;
+    background-image: url(../../../src/images/tall_2.png);
+    background-size: cover;
+}
+
+.tall-section .conainer .imag-box img {
+    width: 100%;
+    height: 100%;
+}
+
+.tall-section .conainer p {
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: -0.8px;
+    color: #00B853;
+}
+
+.tall-section .conainer p span:nth-of-type(1) {
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.tall-section .conainer .btn {
+    width: 100.12999725341797px;
+    height: 34px;
+    border-radius: 30px;
+    background-color: #00B853;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+/*?_______________________________________________________________________________________________________  */
+/**Responsive*/
+@media screen and (max-width:1280px) {
+    .tall-section {
+        width: 95%;
+    }
+
+    .tall-section .conainer {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width:870px) {
+    .tall-section .conainer p {
+        font-weight: 400;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width:780px) {
+    .tall-section .conainer p {
+        font-weight: 400;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width:730px) {
+    .tall-section .conainer {
+        flex-direction: column;
+        align-items: start;
+        background-image: url(../../../src/images/tall_2.png);
+        background-size: contain;
+        background-position: right;
+        background-repeat: no-repeat;
+    }
+
+    .tall-section .conainer .imag-box {
+        display: none;
+    }
+
+    .tall-section .conainer p {
+        background-color: rgba(248, 239, 234, 80%);
+    }
+
+    .tall-section .conainer .btn {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .tall-section .conainer p {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width:335px) {
+    .tall-section .conainer p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:530px) {
+    .tall-section {
+        margin-top: 60px;
+    }
+}

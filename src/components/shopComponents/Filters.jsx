@@ -1,11 +1,10 @@
-import { useState } from "react";
-import article from "../../images/article.png";
+import { useState, useEffect } from "react";
+import article from "../../images/shop/article.png";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function CollapsibleSection({ title, children }) {
   const [open, setOpen] = useState(true);
-
   return (
     <div className="border-b pb-4">
       <button
@@ -26,32 +25,27 @@ export default function ProductFilter({ onFilterChange }) {
   const [availability, setAvailability] = useState([]);
   const [priceRange, setPriceRange] = useState({ min: "", max: "" });
 
-  const categories = [
-    "Beverages",
-    "Bread & Bakery",
-    "Breakfast & Cereal",
-    "Cookies & Cakes",
-    "Fruits & Vegetables",
-    "Meat & Seafood",
-    "Pantry",
-    "Snacks",
-  ];
+  const [dynamicCategories, setDynamicCategories] = useState([]);
+  const [dynamicBrands, setDynamicBrands] = useState([]);
+  const [availabilityCounts, setAvailabilityCounts] = useState({ inStock: 0, outOfStock: 0 });
 
-  const brands = [
-    { name: "Coke", count: 32 },
-    { name: "Pepsi", count: 21 },
-    { name: "Oreo", count: 12 },
-    { name: "Kellogg’s", count: 18 },
-    { name: "Tropicana", count: 10 },
-    { name: "Sprite", count: 8 },
-  ];
+  // Load data from localStorage and extract filters
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("product")) || [];
 
-  const availabilityOptions = [
-    { label: "In Stock", value: "inStock", count: 62 },
-    { label: "Out of Stock", value: "outOfStock", count: 9 },
-  ];
+    const categories = Array.from(new Set(data.map((product) => product.category)));
+    setDynamicCategories(categories);
 
-  // Update parent on any filter change
+    const brands = Array.from(
+      new Set(data.map((product) => product.brand))
+    ).filter(Boolean); // remove null or empty brands
+    setDynamicBrands(brands);
+
+    const inStockCount = data.filter(p => p.stock > 0).length;
+    const outOfStockCount = data.filter(p => p.stock <= 0).length;
+    setAvailabilityCounts({ inStock: inStockCount, outOfStock: outOfStockCount });
+  }, []);
+
   const triggerFilterChange = (updated = {}) => {
     const filterValues = {
       categories: selectedCategories,
@@ -68,7 +62,13 @@ export default function ProductFilter({ onFilterChange }) {
       ? list.filter((v) => v !== value)
       : [...list, value];
     setList(updated);
-    triggerFilterChange({ [list === selectedCategories ? "categories" : list === selectedBrands ? "brands" : "availability"]: updated });
+    triggerFilterChange({
+      [list === selectedCategories
+        ? "categories"
+        : list === selectedBrands
+        ? "brands"
+        : "availability"]: updated,
+    });
   };
 
   const handlePriceChange = (field, value) => {
@@ -82,7 +82,7 @@ export default function ProductFilter({ onFilterChange }) {
       {/* Categories */}
       <CollapsibleSection title="Product Categories">
         <ul className="space-y-1 text-sm text-[#71778E]">
-          {categories.map((cat) => (
+          {dynamicCategories.map((cat) => (
             <li key={cat}>
               <label className="inline-flex justify-between items-center w-full">
                 <div className="flex items-center gap-2">
@@ -90,7 +90,9 @@ export default function ProductFilter({ onFilterChange }) {
                     type="checkbox"
                     className="form-checkbox"
                     checked={selectedCategories.includes(cat)}
-                    onChange={() => toggleSelection(cat, selectedCategories, setSelectedCategories)}
+                    onChange={() =>
+                      toggleSelection(cat, selectedCategories, setSelectedCategories)
+                    }
                   />
                   <span>{cat}</span>
                 </div>
@@ -103,19 +105,20 @@ export default function ProductFilter({ onFilterChange }) {
       {/* Brands */}
       <CollapsibleSection title="Brands">
         <ul className="space-y-1 text-sm text-[#71778E]">
-          {brands.map((brand) => (
-            <li key={brand.name}>
+          {dynamicBrands.map((brand) => (
+            <li key={brand}>
               <label className="inline-flex justify-between items-center w-full">
                 <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
                     className="form-checkbox"
-                    checked={selectedBrands.includes(brand.name)}
-                    onChange={() => toggleSelection(brand.name, selectedBrands, setSelectedBrands)}
+                    checked={selectedBrands.includes(brand)}
+                    onChange={() =>
+                      toggleSelection(brand, selectedBrands, setSelectedBrands)
+                    }
                   />
-                  <span>{brand.name}</span>
+                  <span>{brand}</span>
                 </div>
-                <span className="text-xs text-gray-500">({brand.count})</span>
               </label>
             </li>
           ))}
@@ -150,7 +153,10 @@ export default function ProductFilter({ onFilterChange }) {
 
       {/* Availability */}
       <CollapsibleSection title="Availability">
-        {availabilityOptions.map((item) => (
+        {[
+          { label: "In Stock", value: "inStock", count: availabilityCounts.inStock },
+          { label: "Out of Stock", value: "outOfStock", count: availabilityCounts.outOfStock }
+        ].map((item) => (
           <label
             key={item.value}
             className="inline-flex justify-between items-center w-full text-sm text-[#71778E]"
