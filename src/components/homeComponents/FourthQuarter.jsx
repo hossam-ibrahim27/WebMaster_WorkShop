@@ -46,7 +46,7 @@ const FourthQuarter = () => {
                             <FontAwesomeIcon icon={faMugHot} className='fonticon' />
                             Beverages
                         </NavLink></li>
-                        <li><NavLink className={classActive} to="/conatct">Blog</NavLink></li>
+                        <li><NavLink className={classActive} to="/blog">Blog</NavLink></li>
                         <li><NavLink className={classActive} to="/conatct">Contact</NavLink></li>
                     </ul>
                 </nav>
