@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
@@ -48,6 +49,7 @@ export default function OrderSummary() {
     (acc, item) => acc + item.price * item.quantity,
     0
   );
+
   const shipping = 5.99;
   const total = subtotal + shipping;
 
@@ -58,7 +60,9 @@ export default function OrderSummary() {
       </h2>
 
       <div className="space-y-6">
+
         {cartProducts.map((product) => (
+
           <div key={product.id} className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <img
@@ -66,6 +70,7 @@ export default function OrderSummary() {
                 alt={product.name}
                 className="w-20 h-20 object-cover rounded-lg"
               />
+
               <div>
                 <p className="text-gray-700 font-medium flex items-center">
                   {product.name}
@@ -98,9 +103,11 @@ export default function OrderSummary() {
                   >
                     &times;
                   </button>
+
           </div>
         ))}
       </div>
+
 
       <div className="mt-8 space-y-3 text-gray-700">
         <div className="flex justify-between text-lg font-medium">
@@ -117,12 +124,18 @@ export default function OrderSummary() {
         </div>
       </div>
 
+
       <button
         type="button"
         className="mt-6 w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition cursor-pointer"
       >
         Place Order
       </button>
+
+
+      <div className="mt-4" /> {/* مسافة بسيطة بعد الزر */}
     </div>
   );
 }
+
+

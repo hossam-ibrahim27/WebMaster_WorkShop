@@ -15,9 +15,11 @@ const ProductData = () => {
                     discountPercentage: product.discountPercentage,
                     rating: product.rating,
                     stock: product.stock,
+
                     description:product.description,
                     category: product.category,
                     brand: product.brand,
+
                 }));
                 window.localStorage.setItem("product", JSON.stringify(imgs));
             })

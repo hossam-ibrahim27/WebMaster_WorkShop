@@ -1,5 +1,6 @@
 
 // src/routes/index.jsx
+
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
 // Pages
 import BlogPage from "../pages/blog/BlogPage";
@@ -14,9 +15,9 @@ const routes = createBrowserRouter(
       <Route path="/blog" element={<BlogPage />} />
       <Route path="/checkout" element={<CheckoutPage />} />
       <Route path="/shop" element={<ShopPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage />} />
     </>
   )
 );
 export default routes;
-
-

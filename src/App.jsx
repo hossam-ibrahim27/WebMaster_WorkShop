@@ -13,7 +13,9 @@ import "@fontsource/noto-sans-arabic/400.css";
 import { RouterProvider } from 'react-router-dom'; // ✅ الصح هنا
 import router from './routes';
 import './App.css'
+
 import { Toaster } from 'react-hot-toast';
+
 
 
 

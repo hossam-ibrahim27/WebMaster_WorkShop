@@ -48,3 +48,4 @@ export default function Pagination({ totalBlogs, blogsPerPage, currentPage, pagi
     </div>
   ); 
 }
+

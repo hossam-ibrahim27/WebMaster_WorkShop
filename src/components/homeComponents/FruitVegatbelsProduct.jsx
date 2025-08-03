@@ -3,6 +3,7 @@ import "../../css/homeComponents/FruietVegatableSections.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faStar } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router";
+
 import toast from "react-hot-toast";
 import { useCart } from "../../store/CartContext";
 
@@ -11,6 +12,7 @@ const FruitVegatbelsProduct = (props) => {
     const products = Array.from(dataObject).slice(5, 13); //? Convert To Array 
       const { addToCart } = useCart();
     
+
     return (
         <div>
             <div className={(props.idex === 1) ? "product-tab fruiet-tab fruiet-tab_2" : "product-tab fruiet-tab"}>
@@ -77,10 +79,12 @@ const FruitVegatbelsProduct = (props) => {
                                     <span className="original-price">{item.price}$</span>
                                     <span>{(item.price - (item.price * item.discountPercentage / 100)).toFixed(2)}$</span>
                                 </div>
+
                                 <div                   onClick={() => {
                     addToCart(item);
                     toast.success(`${item.title} added to cart`);
                   }} className={(props.idex === 1) ? "btn none" : "btn"}>
+
                                     <NavLink to="">Add to cart</NavLink>
                                 </div>
                             </div>

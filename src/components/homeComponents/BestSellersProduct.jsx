@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import "../../css/homeComponents/BestSellersProduct.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   faStar,
   faChevronLeft,
@@ -98,6 +99,7 @@ const BestSellersProduct = () => {
       </div>
     </div>
   );
+
 };
 
 export default BestSellersProduct;

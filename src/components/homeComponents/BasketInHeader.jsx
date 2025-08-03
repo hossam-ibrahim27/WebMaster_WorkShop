@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { faUser, faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import "../../../src/css/homeComponents/Header.css";
 import { useNavigate, useLocation } from "react-router";
@@ -27,19 +28,22 @@ const BasketInHeader = () => {
 
   return (
     <div className="padge">
-      <div className="user">
-        <FontAwesomeIcon icon={faUser} className='fonticon' />
+      <div className="user cursor-pointer" onClick={() => navigate("/signup")}> 
+        <FontAwesomeIcon icon={faUser} className="fonticon" />
       </div>
+
       <div className="basket">
         <span>${totalPriceInBasket}</span>
         <div
           className="cursor-pointer"
+
           onClick={() => {
             updateBasketData(); // refresh basket before navigating
             navigate("/checkout");
           }}
         >
           <FontAwesomeIcon icon={faBagShopping} className='fonticon' />
+
           <span>{countProductInBasket}</span>
         </div>
       </div>
