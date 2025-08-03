@@ -1,21 +1,20 @@
 
 // src/routes/index.jsx
-import { createBrowserRouter, createRoutesFromElements, Route, Navigate } from "react-router-dom";
-
+import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
 // Pages
 import BlogPage from "../pages/blog/BlogPage";
-import CheckoutPage from "../pages/checkout/CheckoutPage"; // ✅ استدعاء صفحة الشيك أوت
+import CheckoutPage from "../pages/checkout/CheckoutPage";
+import HomePage from "../pages/HomePage";
 
-const router = createBrowserRouter(
+const routes = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<Navigate to="/blog" />} />
+      <Route path="/" element={<HomePage />} />
       <Route path="/blog" element={<BlogPage />} />
-      <Route path="/checkout" element={<CheckoutPage />} /> {/* ✅ إضافة صفحة الشيك أوت */}
+      <Route path="/checkout" element={<CheckoutPage />} />
     </>
   )
 );
-
-export default router;
+export default routes;
 
 

@@ -19,7 +19,7 @@ export default function BlogPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* 🡪 قسم المقالات - الشمال */}
         <div className="md:col-span-2 order-2 md:order-1 flex flex-col gap-8">
-            <h2 className="text-3xl font-bold mb-10 text-left">Blog Page</h2>
+          <h2 className="text-3xl font-bold mb-10 text-left">Blog Page</h2>
           {currentBlogs.map((blog, index) => (
             <BlogCard
               key={index}
@@ -41,7 +41,7 @@ export default function BlogPage() {
 
         {/* 🡪 السايد بار - اليمين */}
         <div className="order-1 md:order-2 ">
-       <br/><br/><br/>
+          <br /><br /><br />
           <BlogSidebar />
         </div>
       </div>
