@@ -1,0 +1,59 @@
+.discount-section {
+    width: 100%;
+}
+
+.discount-section .coniner {
+    width: 1200px;
+    background-color: #FFEEF2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 7px;
+    margin: auto;
+    padding: 27px 0;
+}
+
+.discount-section .title {
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: -0.1px;
+    color: #ED174A;
+}
+
+.discount-section .title span {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.discount-section .discount {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.1px;
+    padding: 7px 21px;
+    border: 1px dashed #ED174A;
+    text-transform: uppercase;
+    color: #ED174A;
+    border-radius: 30px;
+}
+
+.discount-section .discrp {
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: -0.1px;
+    color: #9B9BB4;
+}
+
+/*?_______________________________________________________________________________________________________  */
+/**Responsive*/
+@media screen and (max-width:1280px) {
+    .discount-section .coniner {
+        width: 95%;
+    }
+}
+@media screen and (max-width:635px) {
+    .discount-section .coniner {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}
