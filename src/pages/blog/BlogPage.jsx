@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
 import Header from "../../components/homeComponents/Header";
 import Footer from "../../components/homeComponents/Footer";
-=======
->>>>>>> 4f678160a1bb3a9098b6f3d1dc6d56ffde08a4df
 import BlogCard from "../../components/blogComponents/BlogCard";
 import BlogSidebar from "../../components/blogComponents/BlogSidebar";
 import Pagination from "../../components/blogComponents/Pagination";
@@ -20,14 +17,13 @@ export default function BlogPage() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-<<<<<<< HEAD
     <>
       <Header />
       <div className="container mx-auto px-4 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* 🡪 قسم المقالات - الشمال */}
           <div className="md:col-span-2 order-2 md:order-1 flex flex-col gap-8">
-            <h2 className="text-3xl font-bold mb-10 text-left">Blog Page</h2>
+            <h2 className="text-3xl font-bold mb-10 ">Blog Page</h2>
             {currentBlogs.map((blog, index) => (
               <BlogCard
                 key={index}
@@ -48,7 +44,7 @@ export default function BlogPage() {
           </div>
 
           {/* 🡪 السايد بار - اليمين */}
-          <div className="order-1 md:order-2 ">
+          <div className="order-1 md:order-2">
             <br />
             <br />
             <br />
@@ -58,38 +54,6 @@ export default function BlogPage() {
       </div>
       <Footer />
     </>
-=======
-    <div className="container mx-auto px-4 py-10">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* 🡪 قسم المقالات - الشمال */}
-        <div className="md:col-span-2 order-2 md:order-1 flex flex-col gap-8">
-          <h2 className="text-3xl font-bold mb-10 text-left">Blog Page</h2>
-          {currentBlogs.map((blog, index) => (
-            <BlogCard
-              key={index}
-              image={blog.image}
-              title={blog.title}
-              description={blog.description}
-            />
-          ))}
-          {/* الترقيم بمسافة تحته */}
-          <div className="mb-12">
-            <Pagination
-              blogsPerPage={blogsPerPage}
-              totalBlogs={blogs.length}
-              currentPage={currentPage}
-              paginate={paginate}
-            />
-          </div>
-        </div>
-
-        {/* 🡪 السايد بار - اليمين */}
-        <div className="order-1 md:order-2 ">
-          <br /><br /><br />
-          <BlogSidebar />
-        </div>
-      </div>
-    </div>
->>>>>>> 4f678160a1bb3a9098b6f3d1dc6d56ffde08a4df
   );
 }
+
