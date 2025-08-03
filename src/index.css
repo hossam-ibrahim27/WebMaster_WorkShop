@@ -6,7 +6,6 @@
   box-sizing: border-box;
 }
 
-<<<<<<< HEAD
 :root {
   font-family: "noto-sans-arabic";
 }
@@ -26,33 +25,30 @@ body {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-=======
 ::selection {
   background-color: #35AFA0;
   color: #fff;
->>>>>>> 4f678160a1bb3a9098b6f3d1dc6d56ffde08a4df
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-<<<<<<< HEAD
 /*custom scroll bar */
-=======
->>>>>>> 4f678160a1bb3a9098b6f3d1dc6d56ffde08a4df
+
 html::-webkit-scrollbar {
   width: 0.5rem;
   background-color: #fff;
 }
 
 html::-webkit-scrollbar-thumb {
-<<<<<<< HEAD
+
   background-color: #d07635;
   border-radius: 5rem;
 }
-=======
+
   background-color: #35AFA0;
   border-radius: 5rem;
 }
->>>>>>> 4f678160a1bb3a9098b6f3d1dc6d56ffde08a4df
+
+
