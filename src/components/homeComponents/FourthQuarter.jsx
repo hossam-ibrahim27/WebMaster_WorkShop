@@ -34,19 +34,21 @@ const FourthQuarter = () => {
                             <FontAwesomeIcon icon={faAngleDown} className='fonticon' />
                         </NavLink></li>
                         <li><NavLink className={classActive} to="/shop">Shop</NavLink></li>
-                        <li><NavLink className={classActive} to="/meats">
+
+                        <li><NavLink className={classActive} to="/shop">
                             <FontAwesomeIcon icon={faBowlFood} className='fonticon' />
                             Meats & Seafood
                         </NavLink></li>
-                        <li><NavLink className={classActive} to="/backery">
+                        <li><NavLink className={classActive} to="/shop">
                             <FontAwesomeIcon icon={faBreadSlice} className='fonticon' />
                             Bakery
                         </NavLink></li>
-                        <li><NavLink className={classActive} to="/beverages">
+                        <li><NavLink className={classActive} to="/shop">
                             <FontAwesomeIcon icon={faMugHot} className='fonticon' />
                             Beverages
                         </NavLink></li>
-                        <li><NavLink className={classActive} to="/conatct">Contact</NavLink></li>
+
+                        <li><NavLink className={classActive} to="/contact">Contact</NavLink></li>
                     </ul>
                 </nav>
             </div>

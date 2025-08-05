@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 
+import { Link } from "react-router-dom";
+import { db } from "../../components/configure/firebase";
+import { collection, addDoc } from "firebase/firestore";
+
+
 export default function CheckoutForm() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -11,7 +16,12 @@ export default function CheckoutForm() {
     zip: "",
   });
 
+
+  const [paymentMethod, setPaymentMethod] = useState("creditCard");
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -31,25 +41,58 @@ export default function CheckoutForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validate()) {
-      console.log("✅ Form submitted:", formData);
+    if (!validate()) return;
+
+    try {
+      setIsSubmitting(true);
+      const docRef = await addDoc(collection(db, "orders"), {
+        ...formData,
+        paymentMethod,
+        createdAt: new Date(),
+      });
+      console.log("✅ Order submitted with ID:", docRef.id);
+      setSubmitMessage("✅ Order submitted successfully!");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        address: "",
+        city: "",
+        zip: "",
+      });
+      setPaymentMethod("creditCard");
+    } catch (error) {
+      console.error("❌ Error submitting order:", error);
+      setSubmitMessage("❌ Failed to submit order. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+
     }
   };
 
   return (
     <div className="bg-white p-6 rounded-xl shadow-md text-left w-full flex justify-center">
       <div className="w-full md:w-[90%] lg:w-[85%]">
-        <br />
+
+        <div className="text-sm text-gray-600 text-right mb-4">
+          Already have an account?{" "}
+          <Link to="/login" className="text-blue-600 font-medium hover:underline">
+            Log in
+          </Link>
+        </div>
+
         <h2 className="text-2xl font-semibold mb-6 text-gray-800">Billing Information</h2>
 
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+
           {/* First Name */}
           <div>
-            <label className="block mb-2 text-sm font-medium text-gray-700 text-left">
-              First Name
-            </label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">First Name</label>
+
             <input
               type="text"
               name="firstName"
@@ -63,9 +106,9 @@ export default function CheckoutForm() {
 
           {/* Last Name */}
           <div>
-            <label className="block mb-2 text-sm font-medium text-gray-700 text-left">
-              Last Name
-            </label>
+
+            <label className="block mb-2 text-sm font-medium text-gray-700">Last Name</label>
+
             <input
               type="text"
               name="lastName"
@@ -79,9 +122,9 @@ export default function CheckoutForm() {
 
           {/* Email */}
           <div className="md:col-span-2">
-            <label className="block mb-2 text-sm font-medium text-gray-700 text-left">
-              Email Address
-            </label>
+
+            <label className="block mb-2 text-sm font-medium text-gray-700">Email Address</label>
+
             <input
               type="email"
               name="email"
@@ -95,9 +138,9 @@ export default function CheckoutForm() {
 
           {/* Phone */}
           <div className="md:col-span-2">
-            <label className="block mb-2 text-sm font-medium text-gray-700 text-left">
-              Phone Number
-            </label>
+
+            <label className="block mb-2 text-sm font-medium text-gray-700">Phone Number</label>
+
             <input
               type="tel"
               name="phone"
@@ -111,9 +154,9 @@ export default function CheckoutForm() {
 
           {/* Address */}
           <div className="md:col-span-2">
-            <label className="block mb-2 text-sm font-medium text-gray-700 text-left">
-              Address
-            </label>
+
+            <label className="block mb-2 text-sm font-medium text-gray-700">Address</label>
+
             <input
               type="text"
               name="address"
@@ -127,9 +170,9 @@ export default function CheckoutForm() {
 
           {/* City */}
           <div>
-            <label className="block mb-2 text-sm font-medium text-gray-700 text-left">
-              City
-            </label>
+
+            <label className="block mb-2 text-sm font-medium text-gray-700">City</label>
+
             <input
               type="text"
               name="city"
@@ -141,11 +184,11 @@ export default function CheckoutForm() {
             {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city}</p>}
           </div>
 
-          {/* ZIP Code */}
+
+          {/* ZIP */}
           <div>
-            <label className="block mb-2 text-sm font-medium text-gray-700 text-left">
-              ZIP Code
-            </label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">ZIP Code</label>
+
             <input
               type="text"
               name="zip"
@@ -156,19 +199,58 @@ export default function CheckoutForm() {
             />
             {errors.zip && <p className="text-red-500 text-sm mt-1">{errors.zip}</p>}
           </div>
-          <br />
+
+
         </form>
-           <div className="pt-6 mb-2">
+
+        {/* Payment Method */}
+        <div className="mt-8">
+          <h2 className="text-xl font-semibold mb-4">Payment Method</h2>
+          <div className="space-y-2">
+            {["creditCard", "paypal", "cash"].map((method) => (
+              <label key={method} className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value={method}
+                  checked={paymentMethod === method}
+                  onChange={(e) => setPaymentMethod(e.target.value)}
+                />
+                <span>{method === "creditCard" ? "Credit Card" : method === "paypal" ? "PayPal" : "Cash on Delivery"}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Submit */}
+        <div className="pt-6 mb-2">
           <button
             type="submit"
             onClick={handleSubmit}
-            className="w-full bg-black text-white py-3 rounded-lg text-lg font-semibold hover:bg-gray-800 transition duration-200 cursor-pointer"
+            disabled={isSubmitting}
+            className={`w-full bg-black text-white py-3 rounded-lg text-lg font-semibold hover:bg-gray-800 transition duration-200 cursor-pointer ${
+              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
-            Continue to Payment
+            {isSubmitting ? "Submitting..." : "Place Order"}
           </button>
         </div>
-        <br />
+
+        {/* Message */}
+        {submitMessage && (
+          <p
+            className={`text-center text-sm mt-4 font-medium ${
+              submitMessage.startsWith("✅") ? "text-green-600" : "text-red-600"
+            }`}
+          >
+            {submitMessage}
+          </p>
+        )}
+       <br/>
       </div>
+ 
     </div>
   );
 }
+
+

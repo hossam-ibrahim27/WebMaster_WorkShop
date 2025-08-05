@@ -18,3 +18,4 @@ export default function BlogCard({ image, title, description }) {
     </div>
   );
 }
+

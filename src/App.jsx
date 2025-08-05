@@ -14,11 +14,15 @@ import { RouterProvider } from 'react-router-dom'; // ✅ الصح هنا
 import router from './routes';
 import './App.css'
 
+import { Toaster } from 'react-hot-toast';
+
+
 
 
 function App() {
   return (
     <>
+      <Toaster position="top-right" reverseOrder={false} />
 
       <RouterProvider router={router} />
     
